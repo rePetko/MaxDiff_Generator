@@ -31,7 +31,6 @@ if attributes is not None:
         #num_groups = len(all_combinations)
         if num_groups > len(all_combinations):
             st.error(f"Number of groups has to be equal or less than {len(all_combinations)} so it doesn't exceed the total number of possible combinations.")
-            
         else:
             # Select random groups
             selected_groups = random.sample(all_combinations, num_groups)
@@ -42,7 +41,6 @@ if attributes is not None:
             
             # Add the 'Groups' column with enumeration starting from 1
             df["Groups"] = range(1, len(df) + 1) 
-
         
             # Set 'Groups' as the index
             df.set_index("Groups", inplace=True)
@@ -55,4 +53,6 @@ if attributes is not None:
             counts = {s: df.apply(lambda col: col.astype(str).str.contains(s, case=False, na=False)).sum().sum() for s in search_string.split(",")}
             st.write("Possible combinations (number of groups)", len(all_combinations))
             st.write("Attribute occurrences per subset:", counts)
+            st.sidebar.write("Press Resample to generate new group combinations.")
+            st.sidebar.button("Resample")
             

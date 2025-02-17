@@ -2,6 +2,7 @@ import streamlit as st
 import itertools
 import random
 import pandas as pd
+import numpy as np
 
 st.header("MaxDiff Generator")
 st.write("This tool generates all possible combinations of test attributes and randomly select balanced subset of these combinations.")
